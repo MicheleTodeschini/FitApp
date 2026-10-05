@@ -5,6 +5,8 @@ body {
   padding: 0;
 }
 
+
+/* HEADER */
 .top-header {
   width: 100%;
   margin: 0;
@@ -16,6 +18,8 @@ body {
   font-family: Arial, sans-serif;
 }
 
+
+/* TABBABR */
 .tabbar {
   position: fixed;
   left: 16px;
@@ -93,9 +97,9 @@ body {
 }
 .add-btn:active { background: rgba(255, 255, 255, 0.35); }
 
-/* main */
+
 .page-main {
-  padding: 20px 16px 120px; /* spazio per la tabbar */
+  padding: 20px 16px 120px; 
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -110,7 +114,7 @@ body {
   border-radius: 16px;
 }
 
-/* card scheda */
+/* CARD SCHEDA WORKOUT */
 .workout-card {
   background: #1e1536;
   border: 1px solid rgba(167, 139, 250, 0.15);
@@ -134,7 +138,7 @@ body {
 }
 .reps { color: #a78bfa; font-weight: bold; }
 
-/* modale */
+/* MODALE */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -178,7 +182,7 @@ body {
   border: 1px solid rgba(167, 139, 250, 0.25);
   border-radius: 12px;
   color: #fff;
-  font-size: 16px; /* 16px evita lo zoom automatico su iPhone */
+  font-size: 16px; 
 }
 .input:focus { outline: none; border-color: #a78bfa; }
 
@@ -223,3 +227,9 @@ body {
 }
 
 .error { color: #f87171; font-size: 14px; margin: 10px 0 0; }
+
+.workout-card-bottom {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
