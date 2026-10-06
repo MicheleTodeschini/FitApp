@@ -1,4 +1,6 @@
 @import url('bootstrap');
+@import url('bootstrap-icons');
+
 
 body {
   margin: 0;
@@ -192,7 +194,7 @@ body {
   align-items: center;
   margin-bottom: 8px;
 }
-.reps-input { width: 90px; flex-shrink: 0; }
+.sets-input { width: 90px; flex-shrink: 0; }
 
 .icon-btn {
   background: none;

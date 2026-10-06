@@ -42,15 +42,18 @@ export default function Workout() {
                                     {w.exercises.map((ex, i) => (
                                         <li key={i}>
                                             <span>{ex.name}</span>
-                                            <span className="reps">{ex.reps}</span>
+                                            <span>{ex.sets}x{ex.reps}</span>
+                                            <span><i class="bi bi-hourglass"></i>{ex.rest} min</span>
+
                                         </li>
                                     ))}
                                 </ul>
+                                <div className='workout-card-bottom'>
+                                    <button className='btn btn-success'>Inizia</button>
+                                </div>
+
                             </section>
                         ))}
-                        <div className='workout-card-bottom'>
-                            <button className='btn btn-success'>Inizia</button>
-                        </div>
                     </section>
                 </main>
 

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { db } from '../db/db'
 
-const emptyRow = () => ({ name: '', reps: '' })
+const emptyRow = () => ({ name: '', sets: '', reps: '' })
 
 export default function WorkoutModal({ onClose }) {
     const [name, setName] = useState('')
@@ -18,7 +18,7 @@ export default function WorkoutModal({ onClose }) {
 
     const confirm = async () => {
         const exercises = rows
-            .map((r) => ({ name: r.name.trim(), reps: r.reps.trim() }))
+            .map((r) => ({ name: r.name.trim(), sets: r.sets.trim(), reps: r.reps.trim(), rest: r.rest.trim() }))
             .filter((r) => r.name)
 
         if (!name.trim()) return setError('Inserisci il nome della scheda')
@@ -55,10 +55,23 @@ export default function WorkoutModal({ onClose }) {
                                 onChange={(e) => updateRow(i, 'name', e.target.value)}
                             />
                             <input
-                                className="input reps-input"
-                                placeholder="4x10"
+                                className="input sets-input"
+                                placeholder="Set"
+                                value={r.sets}
+                                onChange={(e) => updateRow(i, 'sets', e.target.value)}
+                            />
+                            <input
+                                className='input reps-input'
+                                placeholder='Reps'
                                 value={r.reps}
                                 onChange={(e) => updateRow(i, 'reps', e.target.value)}
+
+                            />
+                            <input
+                                className='input rest-input'
+                                placeholder='Rest'
+                                value={r.rest}
+                                onChange={(e) => updateRow(i, 'rest', e.target.value)}
                             />
                             <button className="icon-btn" onClick={() => removeRow(i)} aria-label="Rimuovi riga">
                                 ✕
