@@ -34,7 +34,7 @@ export default function Workout() {
                             <section key={w.id} >
                                 <div className="workout-card-head">
                                     <h2>{w.name}</h2>
-                                    <button className="icon-btn" onClick={() => remove(w.id)} aria-label="Elimina">
+                                    <button className="icon-btn" onClick={() => remove(w.id)}>
                                         ✕
                                     </button>
                                 </div>
