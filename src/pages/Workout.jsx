@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
+import { useNavigate } from 'react-router-dom'
 import { db } from '../db/db'
 import WorkoutModal from '../components/WorkoutModal'
 import TabBar from '../components/TabBar'
@@ -7,10 +8,22 @@ import TabBar from '../components/TabBar'
 
 export default function Workout() {
     const [open, setOpen] = useState(false)
+    const navigate = useNavigate()
     const workouts = useLiveQuery(() => db.workouts.orderBy('createdAt').reverse().toArray(), [])
 
     const remove = (id) => {
         if (confirm('Eliminare questa scheda?')) db.workouts.delete(id)
+    }
+
+    async function start(workoutId) {
+        const sessionId = await db.sessions.add({
+            workoutId,
+            startedAt: Date.now(),
+            endedAt: null
+        })
+
+
+        navigate(`/workout/${workoutId}/active`, { state: { sessionId } })
     }
 
     return (
@@ -49,7 +62,7 @@ export default function Workout() {
                                     ))}
                                 </ul>
                                 <div className='workout-card-bottom'>
-                                    <button className='btn btn-success'>Inizia</button>
+                                    <button className='btn btn-success' onClick={() => start(w.id)}>Inizia</button>
                                 </div>
 
                             </section>

@@ -6,24 +6,24 @@ Flow: Workout → (Start) → ActiveWorkout → ExercisePage ⇄ TimerPage → A
 
 ## 0. Database & routing (do this first)
 
-- [ ] Update the workout creation modal: each exercise needs `name`, `sets`, `reps`, `rest` (seconds)
-- [ ] Save exercises in the workout as `{ name, sets, reps, rest }`
-- [ ] Dexie `version(2)` (keep version 1 untouched) with new tables:
+- [X] Update the workout creation modal: each exercise needs `name`, `sets`, `reps`, `rest` (seconds)
+- [X] Save exercises in the workout as `{ name, sets, reps, rest }`
+- [X] Dexie `version(2)` (keep version 1 untouched) with new tables:
   - `sessions`: `++id, workoutId, startedAt, endedAt`
   - `setLogs`: `++id, sessionId, workoutId, exerciseName, setNumber, reps, weight, note, date`
   - compound index `[workoutId+exerciseName]` to get "last time" data
-- [ ] Add routes:
+- [X] Add routes:
   - `/workout/:id/active`
   - `/workout/:id/exercise/:exIndex`
   - `/workout/:id/rest/:exIndex`
-- [ ] Hide the TabBar on these three pages
+- [X] Hide the TabBar on these three pages
 
 ---
 
 ## 1. Workout page (existing)
 
-- [ ] Add a "Start" button to each workout card
-- [ ] On press: create a row in `sessions` with `startedAt = Date.now()`
+- [X] Add a "Start" button to each workout card
+- [X] On press: create a row in `sessions` with `startedAt = Date.now()`
 - [ ] Save the `sessionId` (route state or localStorage) and navigate to `/workout/:id/active`
 - [ ] If an unfinished session exists (`endedAt` missing), offer "Resume"
 
